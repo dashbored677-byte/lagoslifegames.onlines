@@ -1,214 +1,1302 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A Lagos-inspired interactive landing page and sign-up experience.">
-  <title>Lagos Life — Welcome</title>
-  <link rel="shortcut icon" type="image/png" href="chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=http%3A%2F%2Flagoslife.app%2F" />
-  <meta property="og:image"content="chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=http%3A%2F%2Flagoslife.app%2F" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lagos Life Game Guides - Your Ultimate Lagos Life Strategy & Wiki Hub</title>
+    <meta name="description" content="Ultimate guide for Lagos Life game by Shalom Rayhamen. Verified jobs, salaries, houses, map locations, starter tips, codes, and survival calculators.">
+    <meta name="keywords" content="Lagos Life, Lagos Life Game, Lagos Life App, Lagos Life Guide, Lagos Life Cheats, Lagos Life Jobs, Lagos Life Rent">
+    <link rel="canonical" href="https://lagoslifegames.online/">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lagoslifegames.online/">
+    <meta property="og:title" content="Lagos Life Game Guides | Official Strategy Hub">
+    <meta property="og:description" content="Master Lagos Life browser game. Jobs, salaries, real estate, needs management, and survival strategies for Lagos Life.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop">
+
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0d1117',
+                            card: '#161b22',
+                            border: '#1f4229',
+                            green: '#12281a',
+                            neon: '#00ff66',
+                            neonHover: '#00cc52',
+                            lightGreen: '#10b981',
+                            muted: '#94a3b8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0d1117;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f4229;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00ff66;
+        }
+        .neon-glow {
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.15);
+        }
+        .neon-border {
+            border: 1px solid rgba(0, 255, 102, 0.25);
+        }
+        .neon-border:hover {
+            border-color: rgba(0, 255, 102, 0.6);
+        }
+        .tab-active {
+            background-color: #12281a;
+            border-color: #00ff66;
+            color: #00ff66;
+        }
+        .glass-nav {
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
 </head>
-<body>
+<body class="bg-[#0d1117] text-white font-sans antialiased min-h-screen flex flex-col selection:bg-[#00ff66] selection:text-black">
 
-  <!-- Loading screen -->
-  <div id="loader" class="loader-screen">
-    <div class="loader-logo">Lagos Life</div>
-    <div class="loader-progress"><span></span></div>
-  </div>
+    <header class="sticky top-0 z-40 glass-nav border-b border-[#1f4229]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Logo -->
+                <a href="#homepage" onclick="navigateTo('homepage')" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-[#12281a] to-[#00ff66]/20 border border-[#00ff66]/40 flex items-center justify-center text-[#00ff66] font-bold text-xl group-hover:scale-105 transition-transform">
+                        <i data-lucide="gamepad-2"></i>
+                    </div>
+                    <div>
+                        <span class="text-lg font-extrabold tracking-tight text-white group-hover:text-[#00ff66] transition-colors">
+                            LagosLife<span class="text-[#00ff66]">Games</span>.online
+                        </span>
+                        <span class="hidden sm:block text-[10px] text-brand-muted uppercase tracking-widest font-mono">Official Game Strategy Hub</span>
+                    </div>
+                </a>
 
-  <main class="landing-page">
+                <!-- Search Input Desktop -->
+                <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                    <i data-lucide="search" class="absolute left-3 top-2.5 h-4 w-4 text-brand-muted"></i>
+                    <input type="text" id="global-search" onkeyup="handleGlobalSearch()" placeholder="Search jobs, rents, locations, tips..." class="w-full pl-9 pr-4 py-2 bg-[#161b22] border border-[#1f4229] rounded-xl text-sm text-white placeholder-brand-muted focus:outline-none focus:border-[#00ff66] transition-colors">
+                    <div id="search-results-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-[#161b22] border border-[#1f4229] rounded-xl shadow-2xl max-h-80 overflow-y-auto z-50 p-2"></div>
+                </div>
 
-    <!-- Map/reference background -->
-    <div class="map-background" aria-hidden="true"></div>
-    <div class="map-shade" aria-hidden="true"></div>
+                <!-- Action CTA & Mobile Menu Toggle -->
+                <div class="flex items-center space-x-3">
+                    <a href="https://lagoslife.app/" target="_blank" rel="noopener" class="hidden lg:inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-[#00ff66] text-black font-semibold text-sm hover:bg-[#00cc52] transition-colors shadow-lg shadow-[#00ff66]/10">
+                        <span>Play Lagos Life</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-brand-muted hover:text-white hover:bg-[#161b22] focus:outline-none">
+                        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-    <!-- Floating top navigation -->
-    <header class="top-nav glass-panel">
-      <a class="brand" href="#" aria-label="Home">
-        <span class="brand-crown">♕</span>
-        <span>Lagos Life</span>
-      </a>
-
-      <div class="top-actions">
-        <button class="btn btn-signup js-open-signup">Sign up</button>
-        <button class="btn btn-login js-open-signup">Log in</button>
-      </div>
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-[#1f4229] bg-[#0d1117]/95 px-4 pt-3 pb-6 space-y-3">
+            <div class="relative mb-3">
+                <i data-lucide="search" class="absolute left-3 top-2.5 h-4 w-4 text-brand-muted"></i>
+                <input type="text" onkeyup="handleGlobalSearchMobile(this.value)" placeholder="Search guides..." class="w-full pl-9 pr-4 py-2 bg-[#161b22] border border-[#1f4229] rounded-xl text-sm text-white placeholder-brand-muted focus:outline-none focus:border-[#00ff66]">
+            </div>
+            <div id="mobile-search-results" class="hidden space-y-1 bg-[#161b22] p-2 rounded-xl border border-[#1f4229] mb-3"></div>
+            
+            <div class="grid grid-cols-2 gap-2 text-sm font-medium">
+                <button onclick="navigateTo('homepage')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">1. Overview</button>
+                <button onclick="navigateTo('jobs')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">2. Careers & Jobs</button>
+                <button onclick="navigateTo('money')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">3. Money Guide</button>
+                <button onclick="navigateTo('best-careers')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">4. Best Careers</button>
+                <button onclick="navigateTo('codes')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">5. Codes & Cheats</button>
+                <button onclick="navigateTo('app-guide')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">6. App & Web</button>
+                <button onclick="navigateTo('tips')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">7. Tips & Tricks</button>
+                <button onclick="navigateTo('houses')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">8. Houses & Rent</button>
+                <button onclick="navigateTo('map')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">9. Map Locations</button>
+                <button onclick="navigateTo('beginner')" class="mobile-nav-btn text-left px-3 py-2 rounded-lg hover:bg-[#161b22] hover:text-[#00ff66]">10. Beginner Guide</button>
+            </div>
+        </div>
     </header>
 
-    <!-- Stats -->
-    <section class="top-stats">
-      <div class="pill status-pill"><span class="status-dot"></span>143k online now</div>
-      <div class="pill">👀 15093k visits</div>
-    </section>
+    <nav class="hidden md:block bg-[#161b22]/80 border-b border-[#1f4229] overflow-x-auto">
+        <div class="max-w-7xl mx-auto px-4 flex space-x-1 py-2 text-xs font-semibold whitespace-nowrap">
+            <button onclick="navigateTo('homepage')" id="tab-homepage" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Overview</button>
+            <button onclick="navigateTo('jobs')" id="tab-jobs" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Jobs & Salaries</button>
+            <button onclick="navigateTo('money')" id="tab-money" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Money Making</button>
+            <button onclick="navigateTo('best-careers')" id="tab-best-careers" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Best Careers</button>
+            <button onclick="navigateTo('codes')" id="tab-codes" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Codes & Cheats</button>
+            <button onclick="navigateTo('app-guide')" id="tab-app-guide" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Mobile App / Web</button>
+            <button onclick="navigateTo('tips')" id="tab-tips" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Tips & Hacks</button>
+            <button onclick="navigateTo('houses')" id="tab-houses" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Houses & Rent</button>
+            <button onclick="navigateTo('map')" id="tab-map" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Map Directory</button>
+            <button onclick="navigateTo('beginner')" id="tab-beginner" class="nav-tab px-3 py-2 rounded-lg border border-transparent text-brand-muted hover:text-white hover:bg-[#12281a] transition-all">Beginner Guide</button>
+        </div>
+    </nav>
 
-    <!-- Quick chips -->
-    <section class="quick-chips">
-      <div class="pill feature-chip">🏛️ Gov @Franka</div>
-      <div class="pill feature-chip">🌊 Sea Plots</div>
-      <div class="pill feature-chip">🏠 400 homes</div>
-    </section>
-
-    <!-- Announcement -->
-    <div class="announcement">
-      🎉 <strong>Owambe season is law</strong> this week
+    <div class="bg-[#0d1117] border-b border-[#1f4229]/50 py-2.5 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-xs text-brand-muted flex items-center space-x-2">
+            <a href="#homepage" onclick="navigateTo('homepage')" class="hover:text-[#00ff66] flex items-center gap-1">
+                <i data-lucide="home" class="w-3.5 h-3.5"></i>
+                <span>Home</span>
+            </a>
+            <span>/</span>
+            <span id="breadcrumb-current" class="text-[#00ff66] font-medium">How to Play Lagos Life</span>
+        </div>
     </div>
 
-    <!-- Interactive map markers -->
-    <div class="map-hotspots" aria-label="Featured locations">
-      <button class="map-marker marker-1" data-title="Music & Events" data-text="Discover entertainment and events across the city.">🎷</button>
-      <button class="map-marker marker-2" data-title="Stadium" data-text="Visit the stadium and join the crowd.">⚽</button>
-      <button class="map-marker marker-3" data-title="Bank" data-text="Manage your virtual money and finances.">🏦</button>
-      <button class="map-marker marker-4" data-title="Church" data-text="Explore places of worship around the city.">⛪</button>
-      <button class="map-marker marker-5" data-title="Food" data-text="Find restaurants and local food spots.">🍲</button>
-      <button class="map-marker marker-6" data-title="Beach" data-text="Relax at the waterfront and enjoy the island.">⛵</button>
-      <button class="map-marker marker-7" data-title="Government" data-text="Explore civic and government locations.">⚖️</button>
-      <button class="map-marker marker-8" data-title="Transport" data-text="Move around Lagos and explore new places.">🚕</button>
-      <button class="map-marker marker-9" data-title="Shopping" data-text="Shop for items and discover businesses.">🛍️</button>
-    </div>
-
-    <!-- Labels -->
-    <div class="map-label mainland">MAINLAND</div>
-    <div class="map-label island">ISLAND</div>
-
-    <!-- Coming soon badge -->
-    <div class="coming-soon">✈️ <strong>Airport</strong> · Coming soon</div>
-
-    <!-- Bottom CTA -->
-    <section class="bottom-cta glass-panel">
-      <div class="players">
-        <div class="avatar-stack" aria-hidden="true">
-          <span>👩🏽</span><span>🧑🏾</span><span>👨🏿</span><span>🧑🏽</span>
-        </div>
-        <div><strong>143k Lagosians</strong> playing right now <span class="muted">· free</span></div>
-      </div>
-      <div class="cta-buttons">
-        <button class="btn btn-cta js-open-signup">Sign up free</button>
-        <button class="btn btn-login-large js-open-signup">Log in</button>
-      </div>
-    </section>
-  </main>
-
-  <!-- Location info modal -->
-  <div class="modal fade" id="locationModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-4 border-0 shadow-lg">
-        <div class="modal-header border-0">
-          <h5 class="modal-title" id="locationTitle">Location</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body pt-0" id="locationText"></div>
-        <div class="modal-footer border-0">
-          <button class="btn btn-success rounded-pill px-4 js-open-signup" data-bs-dismiss="modal">Explore by signing up</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sign-up modal -->
-  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content signup-card border-0">
-        <div class="signup-visual">
-          <div class="signup-visual-inner">
-            <span class="mini-crown">♕</span>
-            <h2>Build your Lagos life.</h2>
-            <p>Create your character, explore the city and start your own journey.</p>
-            <div class="benefit-list">
-              <span>✓ Create your profile</span>
-              <span>✓ Explore the city</span>
-              <span>✓ Discover jobs & businesses</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="signup-form-side">
-          <div class="modal-header border-0">
-            <div>
-              <div class="eyebrow">WELCOME</div>
-              <h3 id="signupTitle">Create your account</h3>
-              <p class="small text-secondary mb-0">It only takes a minute to get started.</p>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-
-          <form id="signupForm" novalidate>
-            <div class="modal-body">
-              <div id="formAlert" class="alert d-none" role="alert"></div>
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label for="fullName" class="form-label">Full name</label>
-                  <input id="fullName" name="fullName" class="form-control form-control-lg" type="text" placeholder="Your name" required>
-                  <div class="invalid-feedback">Please enter your name.</div>
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- ================= PAGE 1: HOMEPAGE / HOW TO PLAY ================= -->
+        <section id="page-homepage" class="page-content space-y-12">
+            
+            <!-- Hero Header -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#12281a] via-[#161b22] to-[#0d1117] border border-[#1f4229] p-8 sm:p-12 text-center neon-glow">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-[#00ff66]/5 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#12281a] border border-[#00ff66]/30 text-[#00ff66] text-xs font-semibold tracking-wide">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>UPDATED FOR LAGOS LIFE V2.0</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight">
+                        Lagos Life Game <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00ff66] to-emerald-400">Guides</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-brand-muted font-normal">
+                        Your Ultimate Lagos Life Game Guide. Master jobs, survive six decay needs, optimize career shifts, rent real estate, and conquer the streets of Lagos.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <button onclick="navigateTo('beginner')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#00ff66] text-black font-extrabold text-base hover:bg-[#00cc52] transition-all transform hover:-translate-y-0.5 shadow-xl shadow-[#00ff66]/20 flex items-center justify-center gap-2">
+                            <i data-lucide="play-circle" class="w-5 h-5"></i>
+                            <span>Start Here (Beginner Guide)</span>
+                        </button>
+                        <button onclick="navigateTo('jobs')" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-[#161b22] border border-[#1f4229] text-white font-bold text-base hover:border-[#00ff66] hover:text-[#00ff66] transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="briefcase" class="w-5 h-5"></i>
+                            <span>Explore Jobs & Salaries</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                  <label for="username" class="form-label">Username</label>
-                  <input id="username" name="username" class="form-control form-control-lg" type="text" placeholder="@username" minlength="3" required>
-                  <div class="invalid-feedback">Choose a username with at least 3 characters.</div>
-                </div>
-                <div class="col-12">
-                  <label for="email" class="form-label">Email address</label>
-                  <input id="email" name="email" class="form-control form-control-lg" type="email" placeholder="you@example.com" required>
-                  <div class="invalid-feedback">Enter a valid email address.</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="password" class="form-label">Password</label>
-                  <input id="password" name="password" class="form-control form-control-lg" type="password" minlength="8" placeholder="At least 8 characters" required>
-                  <div class="invalid-feedback">Password must be at least 8 characters.</div>
-                </div>
-                <div class="col-md-6">
-                  <label for="confirmPassword" class="form-label">Confirm password</label>
-                  <input id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" type="password" placeholder="Repeat password" required>
-                  <div class="invalid-feedback">Passwords must match.</div>
-                </div>
-                <div class="col-12">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="ageCheck" required>
-                    <label class="form-check-label" for="ageCheck">I confirm that I meet the age requirement for this experience.</label>
-                    <div class="invalid-feedback">Please confirm before registering.</div>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            <div class="modal-footer border-0">
-              <button type="submit" class="btn btn-register w-100">
-                <span class="btn-label">Register & continue</span>
-                <span class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span>
-              </button>
-              <p class="tiny-note text-center w-100 mb-0">By registering, you agree to the site's terms and privacy policy.</p>
+            <div class="space-y-6">
+                <div class="border-l-4 border-[#00ff66] pl-4">
+                    <h2 class="text-2xl font-bold text-white">The Six Need Systems & Decay Rates</h2>
+                    <p class="text-brand-muted text-sm mt-1">To survive in Lagos Life, you must continuously manage 6 core personal needs. Letting any reach 0% causes collapse or performance penalties.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Need Card 1 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                                    <i data-lucide="droplet" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">1. Bladder Need</h3>
+                                    <p class="text-xs text-amber-400 font-mono">Fastest Decay: -7.0% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Requires frequent rest stop visits or home bathrooms. High priority during travel and right before starting shift work.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-amber-400 h-full w-[70%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Need Card 2 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-orange-500/10 text-orange-400 border border-orange-500/20">
+                                    <i data-lucide="utensils" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">2. Hunger Need</h3>
+                                    <p class="text-xs text-orange-400 font-mono">Decay Rate: -5.5% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Replenish by eating at street stalls like Amala Shitta, local mama put, or cooking meals inside rented apartments.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-orange-400 h-full w-[60%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Need Card 3 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                                    <i data-lucide="smile" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">3. Fun Need</h3>
+                                    <p class="text-xs text-indigo-400 font-mono">Decay Rate: -4.5% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Maintained by visiting Elegushi Beach, Freedom Park concerts, Quilox Nightclub, or playing mobile games on your phone.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-indigo-400 h-full w-[85%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Need Card 4 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-[#00ff66]/10 text-[#00ff66] border border-[#00ff66]/20">
+                                    <i data-lucide="zap" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">4. Energy Need</h3>
+                                    <p class="text-xs text-[#00ff66] font-mono">Decay Rate: -4.0% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Restored by sleeping in rented housing beds or resting on public benches. Low energy severely penalties work shift output.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-[#00ff66] h-full w-[50%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Need Card 5 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">5. Hygiene Need</h3>
+                                    <p class="text-xs text-cyan-400 font-mono">Decay Rate: -3.5% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Shower at home or bucket bath in Face-Me-I-Face-You rentals. Cleanliness determines acceptance at corporate jobs like Finance.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-cyan-400 h-full w-[90%]"></div>
+                        </div>
+                    </div>
+
+                    <!-- Need Card 6 -->
+                    <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 hover:border-[#00ff66]/50 transition-all space-y-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2.5 rounded-xl bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                                    <i data-lucide="users" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-white text-base">6. Social Need</h3>
+                                    <p class="text-xs text-pink-400 font-mono">Decay Rate: -3.0% / hr</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-brand-muted leading-relaxed">
+                            Maintained by chatting with NPCs, street vendors, co-workers, and attending Owambe weekend parties across Lekki.
+                        </p>
+                        <div class="w-full bg-[#0d1117] h-2 rounded-full overflow-hidden border border-[#1f4229]">
+                            <div class="bg-pink-400 h-full w-[65%]"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </form>
+
+            <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-6">
+                <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                    <i data-lucide="user-check" class="text-[#00ff66]"></i>
+                    <span>Character Creation: Backgrounds & Traits</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-4 bg-[#0d1117] rounded-xl border border-[#1f4229] space-y-2">
+                        <span class="px-2.5 py-1 rounded bg-[#00ff66]/10 text-[#00ff66] text-xs font-mono font-bold">BACKGROUND 1</span>
+                        <h3 class="text-lg font-bold text-white">Nepo Baby Start</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">Starts with ₦250,000 allowance, Yaba Self-Contain apartment unlocked, and bonus starting suit. Drains Social faster if doing street work.</p>
+                    </div>
+                    <div class="p-4 bg-[#0d1117] rounded-xl border border-[#1f4229] space-y-2">
+                        <span class="px-2.5 py-1 rounded bg-amber-500/10 text-amber-400 text-xs font-mono font-bold">BACKGROUND 2</span>
+                        <h3 class="text-lg font-bold text-white">Lapo Hustler Start</h3>
+                        <p class="text-xs text-brand-muted leading-relaxed">Starts with ₦8,500 cash, residing in Mushin room. Grants +25% bonus Street Sense skill xp gain and reduced Danfo fare costs.</p>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs text-brand-muted">
+                        <thead class="bg-[#0d1117] text-white uppercase font-mono border-b border-[#1f4229]">
+                            <tr>
+                                <th class="py-3 px-4">Trait Name</th>
+                                <th class="py-3 px-4">Bonus Effect</th>
+                                <th class="py-3 px-4">Best Career Synergies</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#1f4229]">
+                            <tr>
+                                <td class="py-3 px-4 font-bold text-white">Tech Bro / Sis</td>
+                                <td class="py-3 px-4 text-[#00ff66]">+30% Coding skill gain rate</td>
+                                <td class="py-3 px-4">CcHub Tech Intern -> CTO</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-bold text-white">Owambe Spirit</td>
+                                <td class="py-3 px-4 text-[#00ff66]">Fun decays 40% slower at parties</td>
+                                <td class="py-3 px-4">Entertainment / Hype Man</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-bold text-white">Night Crawler</td>
+                                <td class="py-3 px-4 text-[#00ff66]">No Energy penalty between 22:00-06:00</td>
+                                <td class="py-3 px-4">Quilox Nightclub Staff</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-4 font-bold text-white">Street Hustler</td>
+                                <td class="py-3 px-4 text-[#00ff66]">+15% extra pay on Balogun trade sales</td>
+                                <td class="py-3 px-4">Market Boss / POS Agent</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Quick FAQ Module for Homepage -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-bold text-white">Frequently Asked Questions</h2>
+                <div class="space-y-3">
+                    <details class="group bg-[#161b22] border border-[#1f4229] rounded-xl p-4 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-white">
+                            <span>How do I save my progress in Lagos Life?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00ff66] group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-brand-muted mt-3 leading-relaxed">
+                            Lagos Life saves your progress automatically in your browser's local storage. To prevent data loss when clearing browser cache, register an email account in the game menu.
+                        </p>
+                    </details>
+                    <details class="group bg-[#161b22] border border-[#1f4229] rounded-xl p-4 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-white">
+                            <span>What happens if my weekly rent is unpaid?</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4 text-[#00ff66] group-open:rotate-180 transition-transform"></i>
+                        </summary>
+                        <p class="text-xs text-brand-muted mt-3 leading-relaxed">
+                            Failing to pay weekly rent by Sunday 23:59 results in immediate eviction. Your personal items are moved to temporary storage and you spawn at the nearest Danfo park with low hygiene.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: JOBS & SALARIES ================= -->
+        <section id="page-jobs" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Lagos Life Jobs & Salaries Guide</h1>
+                <p class="text-brand-muted text-sm mt-1">Verified data for all 5 career paths, required skills, shift hours, locations, and salary scaling.</p>
+            </div>
+
+            <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl overflow-hidden shadow-xl">
+                <div class="p-4 bg-[#12281a]/50 border-b border-[#1f4229] flex flex-wrap justify-between items-center gap-4">
+                    <div class="flex items-center space-x-2 text-xs font-mono text-[#00ff66]">
+                        <i data-lucide="database"></i>
+                        <span>VERIFIED CAREER DIRECTORY</span>
+                    </div>
+                    <span class="text-xs text-brand-muted">Shift wages paid immediately after shift completion.</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-brand-muted">
+                        <thead class="bg-[#0d1117] text-white uppercase font-mono text-xs border-b border-[#1f4229]">
+                            <tr>
+                                <th class="py-4 px-4">Career Sector</th>
+                                <th class="py-4 px-4">Location</th>
+                                <th class="py-4 px-4">Shift Hours</th>
+                                <th class="py-4 px-4">Primary Skill</th>
+                                <th class="py-4 px-4">Entry Pay</th>
+                                <th class="py-4 px-4 text-[#00ff66]">Top Pay / Shift</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#1f4229]">
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                                    <span>Technology</span>
+                                </td>
+                                <td class="py-4 px-4">CcHub (Yaba)</td>
+                                <td class="py-4 px-4 font-mono text-xs">Mon-Fri 09:00-17:00</td>
+                                <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-xs">Coding</span></td>
+                                <td class="py-4 px-4 font-mono text-white">₦9,900</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦76,500 <span class="text-[10px] text-brand-muted">(CTO)</span></td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                    <span>Finance</span>
+                                </td>
+                                <td class="py-4 px-4">Victoria Island</td>
+                                <td class="py-4 px-4 font-mono text-xs">Mon-Fri 08:00-17:00</td>
+                                <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-xs">Accounting</span></td>
+                                <td class="py-4 px-4 font-mono text-white">₦11,500</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦85,000 <span class="text-[10px] text-brand-muted">(Director)</span></td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                    <span>Entertainment</span>
+                                </td>
+                                <td class="py-4 px-4">Quilox (Lekki)</td>
+                                <td class="py-4 px-4 font-mono text-xs">Wed-Sun 22:00-05:00</td>
+                                <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 text-xs">Performance</span></td>
+                                <td class="py-4 px-4 font-mono text-white">₦8,500</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦92,000 <span class="text-[10px] text-brand-muted">(Superstar)</span></td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                    <span>Market Hustle</span>
+                                </td>
+                                <td class="py-4 px-4">Balogun Market</td>
+                                <td class="py-4 px-4 font-mono text-xs">Daily 07:00-18:00</td>
+                                <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-xs">Street Sense</span></td>
+                                <td class="py-4 px-4 font-mono text-white">₦6,600</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦55,000 <span class="text-[10px] text-brand-muted">(Boss)</span></td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white flex items-center gap-2">
+                                    <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                                    <span>Civil Service</span>
+                                </td>
+                                <td class="py-4 px-4">Alausa (Ikeja)</td>
+                                <td class="py-4 px-4 font-mono text-xs">Mon-Fri 08:00-16:00</td>
+                                <td class="py-4 px-4"><span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-xs">Bureaucracy</span></td>
+                                <td class="py-4 px-4 font-mono text-white">₦7,200</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦62,000 <span class="text-[10px] text-brand-muted">(Perm Sec)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: HOW TO MAKE MONEY ================= -->
+        <section id="page-money" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">How to Make Money in Lagos Life</h1>
+                <p class="text-brand-muted text-sm mt-1">Master careers, side gigs, shift multipliers, and budgeting strategies.</p>
+            </div>
+
+            <div class="bg-[#161b22] border border-[#00ff66]/30 rounded-2xl p-6 neon-glow space-y-6">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="calculator" class="text-[#00ff66]"></i>
+                        <span>Interactive Net Weekly Earnings Calculator</span>
+                    </h2>
+                    <span class="text-xs bg-[#12281a] text-[#00ff66] px-3 py-1 rounded-full font-mono border border-[#00ff66]/30">BUDGET TOOL</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-brand-muted uppercase mb-2">Select Career Sector</label>
+                        <select id="calc-job" onchange="calculateBudget()" class="w-full bg-[#0d1117] border border-[#1f4229] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#00ff66]">
+                            <option value="9900">Tech Intern (₦9,900 / shift)</option>
+                            <option value="11500">Finance Analyst (₦11,500 / shift)</option>
+                            <option value="8500">Hype Man (₦8,500 / shift)</option>
+                            <option value="6600">Balogun Trader (₦6,600 / shift)</option>
+                            <option value="76500">Tech CTO (₦76,500 / shift)</option>
+                            <option value="85000">Finance Director (₦85,000 / shift)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-brand-muted uppercase mb-2">Shifts Completed / Week</label>
+                        <input type="number" id="calc-shifts" value="5" min="1" max="7" onchange="calculateBudget()" class="w-full bg-[#0d1117] border border-[#1f4229] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#00ff66]">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-brand-muted uppercase mb-2">Rented Residence</label>
+                        <select id="calc-rent" onchange="calculateBudget()" class="w-full bg-[#0d1117] border border-[#1f4229] rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-[#00ff66]">
+                            <option value="2400">Mushin Face-Me-I-Face-You (₦2,400/wk)</option>
+                            <option value="6000" selected>Yaba Self-Contain (₦6,000/wk)</option>
+                            <option value="17000">Lekki Mini-Flat (₦17,000/wk)</option>
+                            <option value="250000">Ikoyi Duplex (₦250,000/wk)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-[#1f4229]">
+                    <div class="bg-[#0d1117] p-4 rounded-xl border border-[#1f4229]">
+                        <span class="text-xs text-brand-muted font-mono uppercase">Gross Income</span>
+                        <div id="calc-gross" class="text-xl font-extrabold text-white font-mono mt-1">₦49,500</div>
+                    </div>
+                    <div class="bg-[#0d1117] p-4 rounded-xl border border-[#1f4229]">
+                        <span class="text-xs text-brand-muted font-mono uppercase">Weekly Housing Cost</span>
+                        <div id="calc-housing" class="text-xl font-extrabold text-rose-400 font-mono mt-1">-₦6,000</div>
+                    </div>
+                    <div class="bg-[#12281a] p-4 rounded-xl border border-[#00ff66]/30">
+                        <span class="text-xs text-[#00ff66] font-mono uppercase">Net Savings / Week</span>
+                        <div id="calc-net" class="text-2xl font-extrabold text-[#00ff66] font-mono mt-1">₦43,500</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gigs & Strategy grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="zap" class="text-amber-400"></i>
+                        <span>High-Yield Side Gigs</span>
+                    </h3>
+                    <ul class="space-y-3 text-xs text-brand-muted">
+                        <li class="p-3 bg-[#0d1117] rounded-xl border border-[#1f4229]">
+                            <span class="font-bold text-white">Danfo Shuttle Driving:</span> Rent a bus at Oshodi for ₦3,000/day. Yields ~₦12,000 per 4 hours if passenger satisfaction stays above 80%.
+                        </li>
+                        <li class="p-3 bg-[#0d1117] rounded-xl border border-[#1f4229]">
+                            <span class="font-bold text-white">POS Cash Kiosk Operator:</span> Set up kiosk at CMS bus stop. Earn passive transaction fees while doing online freelance coding.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-4">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                        <i data-lucide="trending-up" class="text-[#00ff66]"></i>
+                        <span>Shift Performance Multipliers</span>
+                    </h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Going to a shift with 100% Energy, 100% Hunger, and 100% Hygiene triggers a <span class="text-[#00ff66] font-mono font-bold">+25% Perfect Shift Bonus</span>.
+                    </p>
+                    <div class="p-3 bg-[#12281a] border border-[#00ff66]/20 rounded-xl text-xs text-[#00ff66] font-mono">
+                        Base Wage ₦10,000 + 25% Needs Bonus + 15% Skill Rank Multiplier = ₦14,000 per shift.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: BEST CAREERS ================= -->
+        <section id="page-best-careers" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Best Careers Comparison & Rankings</h1>
+                <p class="text-brand-muted text-sm mt-1">Comparing total career progression, shift length, effort, and pay scale.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Top Pick 1 -->
+                <div class="bg-[#161b22] border border-[#00ff66]/40 rounded-2xl p-6 space-y-4 neon-glow relative">
+                    <span class="absolute top-4 right-4 bg-[#00ff66] text-black font-extrabold text-[10px] px-2.5 py-1 rounded-full uppercase">BEST FOR BEGINNERS</span>
+                    <h3 class="text-xl font-extrabold text-white">Technology Sector</h3>
+                    <p class="text-xs text-brand-muted">CcHub Yaba location allows fast commute from Yaba Self-Contain. Easy Coding skill grind.</p>
+                    <div class="space-y-2 text-xs font-mono">
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Max Salary:</span> <span class="text-[#00ff66]">₦76,500 / shift</span>
+                        </div>
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Effort Rating:</span> <span class="text-amber-400">Low-Moderate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Pick 2 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-4">
+                    <span class="bg-purple-500/20 text-purple-400 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase">NIGHT OWL PICK</span>
+                    <h3 class="text-xl font-extrabold text-white">Entertainment</h3>
+                    <p class="text-xs text-brand-muted">Quilox Lekki nightlife shift (22:00-05:00). High tips and passive Fun need recovery.</p>
+                    <div class="space-y-2 text-xs font-mono">
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Max Salary:</span> <span class="text-[#00ff66]">₦92,000 / shift</span>
+                        </div>
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Effort Rating:</span> <span class="text-purple-400">High Energy Decay</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Pick 3 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-4">
+                    <span class="bg-emerald-500/20 text-emerald-400 font-bold text-[10px] px-2.5 py-1 rounded-full uppercase">HIGHEST PAYOUT</span>
+                    <h3 class="text-xl font-extrabold text-white">Finance Sector</h3>
+                    <p class="text-xs text-brand-muted">Victoria Island corporate towers. Requires mandatory clean suit and high Accounting skill.</p>
+                    <div class="space-y-2 text-xs font-mono">
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Max Salary:</span> <span class="text-[#00ff66]">₦85,000 / shift</span>
+                        </div>
+                        <div class="flex justify-between border-b border-[#1f4229] pb-1">
+                            <span>Effort Rating:</span> <span class="text-emerald-400">Strict Dress Code</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: CODES & CHEATS ================= -->
+        <section id="page-codes" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-amber-500 pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Lagos Life Codes, Cheats & Scam Policy</h1>
+                <p class="text-brand-muted text-sm mt-1">Official status report on Lagos Life promo codes and security notices.</p>
+            </div>
+
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-2xl p-6 space-y-4">
+                <div class="flex items-center space-x-3 text-amber-400">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                    <h2 class="text-lg font-bold">OFFICIAL NOTICE: NO CHEAT CODES EXIST</h2>
+                </div>
+                <p class="text-xs text-brand-muted leading-relaxed">
+                    There are <span class="text-white font-bold">NO official secret cheat codes, unlimited money generators, or hack passwords</span> in Lagos Life. The developer, Shalom Rayhamen, built the game with anti-cheat state verification.
+                </p>
+                <div class="p-4 bg-[#0d1117] rounded-xl border border-amber-500/20 text-xs text-amber-300">
+                    <i data-lucide="alert-triangle" class="inline-block w-4 h-4 mr-1"></i>
+                    <span class="font-bold">Security Warning:</span> Websites claiming to sell Lagos Life "Unlimited Money APK Mods" or "Code Generators" are phishing scams intended to steal account credentials.
+                </div>
+            </div>
+
+            <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-4">
+                <h2 class="text-xl font-bold text-white">Legitimate Optimization Methods</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-4 bg-[#0d1117] rounded-xl border border-[#1f4229] space-y-1">
+                        <span class="font-bold text-[#00ff66]">1. Tech Bro Trait Bonus</span>
+                        <p class="text-brand-muted">Select "Tech Bro" during character creation to instantly boost Coding skill XP gain by 30%.</p>
+                    </div>
+                    <div class="p-4 bg-[#0d1117] rounded-xl border border-[#1f4229] space-y-1">
+                        <span class="font-bold text-[#00ff66]">2. Perfect Needs Bonus</span>
+                        <p class="text-brand-muted">Maintain 100% Hunger, Energy, and Hygiene right before starting shifts for a +25% payout bonus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: APP GUIDE ================= -->
+        <section id="page-app-guide" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Lagos Life Mobile App & Browser Access</h1>
+                <p class="text-brand-muted text-sm mt-1">Official platform availability and step-by-step PWA installation guide.</p>
+            </div>
+
+            <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 space-y-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-[#0d1117] p-4 rounded-xl border border-[#1f4229]">
+                    <div>
+                        <span class="text-xs text-brand-muted uppercase font-mono">Official Game URL</span>
+                        <div class="text-base font-bold text-[#00ff66] font-mono">https://lagoslife.app/</div>
+                    </div>
+                    <button onclick="copyToClipboard('https://lagoslife.app/')" class="px-4 py-2 bg-[#12281a] border border-[#00ff66]/30 text-[#00ff66] hover:bg-[#00ff66] hover:text-black rounded-xl text-xs font-bold transition-all flex items-center gap-2">
+                        <i data-lucide="copy" class="w-4 h-4"></i>
+                        <span>Copy Link</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Android PWA -->
+                    <div class="bg-[#0d1117] border border-[#1f4229] p-5 rounded-xl space-y-3">
+                        <div class="flex items-center space-x-3 text-emerald-400">
+                            <i data-lucide="smartphone" class="w-6 h-6"></i>
+                            <h3 class="font-bold text-white text-base">Android PWA Installation</h3>
+                        </div>
+                        <ol class="list-decimal list-inside text-xs text-brand-muted space-y-2">
+                            <li>Open <span class="text-white font-mono">https://lagoslife.app/</span> in Chrome.</li>
+                            <li>Tap the three vertical dots menu icon (top-right).</li>
+                            <li>Select <span class="text-[#00ff66] font-semibold">"Add to Home screen"</span> or "Install App".</li>
+                            <li>Launch directly from your Android app drawer with no address bar.</li>
+                        </ol>
+                    </div>
+
+                    <!-- iOS PWA -->
+                    <div class="bg-[#0d1117] border border-[#1f4229] p-5 rounded-xl space-y-3">
+                        <div class="flex items-center space-x-3 text-blue-400">
+                            <i data-lucide="apple" class="w-6 h-6"></i>
+                            <h3 class="font-bold text-white text-base">iPhone iOS Safari Installation</h3>
+                        </div>
+                        <ol class="list-decimal list-inside text-xs text-brand-muted space-y-2">
+                            <li>Open <span class="text-white font-mono">https://lagoslife.app/</span> in Safari.</li>
+                            <li>Tap the <span class="text-blue-400 font-semibold">Share button</span> (square with up arrow).</li>
+                            <li>Scroll down and tap <span class="text-[#00ff66] font-semibold">"Add to Home Screen"</span>.</li>
+                            <li>Confirm name and tap "Add". Enjoy full-screen gaming.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 7: TIPS AND TRICKS ================= -->
+        <section id="page-tips" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">10 Pro Lagos Life Survival Tips & Hacks</h1>
+                <p class="text-brand-muted text-sm mt-1">Tested strategies to optimize money, time, and needs management.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #01</span>
+                    <h3 class="font-bold text-white text-base">Pre-Shift Need Reset</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Always top up Hunger to 100% and Bladder to 100% right before entering work. This triggers the +25% perfect shift cash multiplier.</p>
+                </div>
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #02</span>
+                    <h3 class="font-bold text-white text-base">Toilet Before Transit</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Bladder decays at 7.0%/hr (fastest in-game). Using the toilet right before getting on a Danfo prevents unexpected accidents in traffic.</p>
+                </div>
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #03</span>
+                    <h3 class="font-bold text-white text-base">Amala Shitta Budget Meals</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Amala Shitta in Surulere provides +45 Hunger for only ₦800, making it 3x more cost-effective than Lekki restaurants.</p>
+                </div>
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #04</span>
+                    <h3 class="font-bold text-white text-base">Danfo vs Uber Commuting</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Use cheap Danfo buses (₦300) when energy is above 60%. Use Uber (₦2,500) only when rushing to a high-paying Finance shift with low time left.</p>
+                </div>
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #05</span>
+                    <h3 class="font-bold text-white text-base">Yaba Strategic Hub</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Renting in Yaba puts you within walking distance of CcHub (Tech job) and cheap food, saving thousands in weekly transit fees.</p>
+                </div>
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-xl p-5 space-y-2">
+                    <span class="text-[#00ff66] font-mono text-xs font-bold">PRO TIP #06</span>
+                    <h3 class="font-bold text-white text-base">Passive Social Gain</h3>
+                    <p class="text-xs text-brand-muted leading-relaxed">Talking to street vendors at Balogun Market passively refills your Social stat while shopping for cheap clothes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 8: HOUSES & RENT ================= -->
+        <section id="page-houses" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Lagos Life Real Estate & Housing Directory</h1>
+                <p class="text-brand-muted text-sm mt-1">Rent prices, move-in deposit requirements, and amenities across Lagos neighborhoods.</p>
+            </div>
+
+            <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl overflow-hidden shadow-xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm text-brand-muted">
+                        <thead class="bg-[#0d1117] text-white uppercase font-mono text-xs border-b border-[#1f4229]">
+                            <tr>
+                                <th class="py-4 px-4">Property Type</th>
+                                <th class="py-4 px-4">Location</th>
+                                <th class="py-4 px-4 text-[#00ff66]">Weekly Rent</th>
+                                <th class="py-4 px-4">Move-in Deposit</th>
+                                <th class="py-4 px-4">Amenities</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[#1f4229]">
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white">Face-Me-I-Face-You</td>
+                                <td class="py-4 px-4">Mushin</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦2,400 / wk</td>
+                                <td class="py-4 px-4 font-mono">₦16,000</td>
+                                <td class="py-4 px-4 text-xs">Foam mattress, shared bucket shower</td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white">Self-Contain Studio</td>
+                                <td class="py-4 px-4">Yaba</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦6,000 / wk</td>
+                                <td class="py-4 px-4 font-mono">₦36,000</td>
+                                <td class="py-4 px-4 text-xs">Private bathroom, desk, kitchen corner</td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white">Mini-Flat Apartment</td>
+                                <td class="py-4 px-4">Lekki Phase 1</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦17,000 / wk</td>
+                                <td class="py-4 px-4 font-mono">₦104,000</td>
+                                <td class="py-4 px-4 text-xs">Modern shower, AC, balcony view</td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white">Luxury Duplex</td>
+                                <td class="py-4 px-4">Ikoyi</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦250,000 / wk</td>
+                                <td class="py-4 px-4 font-mono">₦1,500,000</td>
+                                <td class="py-4 px-4 text-xs">Private pool, gym, 24/7 power generator</td>
+                            </tr>
+                            <tr class="hover:bg-[#12281a]/30 transition-colors">
+                                <td class="py-4 px-4 font-bold text-white">Waterfront Mansion</td>
+                                <td class="py-4 px-4">Banana Island</td>
+                                <td class="py-4 px-4 font-mono font-bold text-[#00ff66]">₦1,500,000 / wk</td>
+                                <td class="py-4 px-4 font-mono">₦9,000,000</td>
+                                <td class="py-4 px-4 text-xs">Helipad, private security, max prestige</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 9: MAP LOCATIONS ================= -->
+        <section id="page-map" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">Lagos Life Map & Location Directory</h1>
+                <p class="text-brand-muted text-sm mt-1">Explore key landmarks, workplaces, transit hubs, and recreation spots.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Location Card 1 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 space-y-3 hover:border-[#00ff66]/50 transition-all">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base">Yaba (Tech Hub)</h3>
+                        <span class="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 text-xs font-mono">MAINLAND</span>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Home to CcHub, Unilag Akoka, YabaTech, and affordable self-contain rentals.
+                    </p>
+                    <div class="pt-2 border-t border-[#1f4229] flex justify-between text-[11px] font-mono text-brand-muted">
+                        <span>Danfo Fare: ₦300</span>
+                        <span>Uber Fare: ₦1,800</span>
+                    </div>
+                </div>
+
+                <!-- Location Card 2 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 space-y-3 hover:border-[#00ff66]/50 transition-all">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base">Victoria Island (VI)</h3>
+                        <span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 text-xs font-mono">ISLAND</span>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Financial district headquarters, corporate banking towers, and high-end restaurants.
+                    </p>
+                    <div class="pt-2 border-t border-[#1f4229] flex justify-between text-[11px] font-mono text-brand-muted">
+                        <span>Danfo Fare: ₦700</span>
+                        <span>Uber Fare: ₦3,500</span>
+                    </div>
+                </div>
+
+                <!-- Location Card 3 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 space-y-3 hover:border-[#00ff66]/50 transition-all">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base">Lekki Phase 1</h3>
+                        <span class="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 text-xs font-mono">NIGHTLIFE</span>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Quilox Nightclub, Elegushi Beach, and luxury mini-flat apartments.
+                    </p>
+                    <div class="pt-2 border-t border-[#1f4229] flex justify-between text-[11px] font-mono text-brand-muted">
+                        <span>Danfo Fare: ₦800</span>
+                        <span>Uber Fare: ₦4,000</span>
+                    </div>
+                </div>
+
+                <!-- Location Card 4 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 space-y-3 hover:border-[#00ff66]/50 transition-all">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base">Balogun Market (Lagos Island)</h3>
+                        <span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 text-xs font-mono">MARKET</span>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Bustling market for trading, street hustle careers, and cheap clothing shopping.
+                    </p>
+                    <div class="pt-2 border-t border-[#1f4229] flex justify-between text-[11px] font-mono text-brand-muted">
+                        <span>Danfo Fare: ₦400</span>
+                        <span>Uber Fare: ₦2,200</span>
+                    </div>
+                </div>
+
+                <!-- Location Card 5 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-5 space-y-3 hover:border-[#00ff66]/50 transition-all">
+                    <div class="flex justify-between items-center">
+                        <h3 class="font-bold text-white text-base">Ikeja & Alausa</h3>
+                        <span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 text-xs font-mono">CAPITAL</span>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Lagos Secretariat civil service offices, Ikeja City Mall, and Computer Village.
+                    </p>
+                    <div class="pt-2 border-t border-[#1f4229] flex justify-between text-[11px] font-mono text-brand-muted">
+                        <span>Danfo Fare: ₦500</span>
+                        <span>Uber Fare: ₦2,800</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 10: BEGINNER GUIDE ================= -->
+        <section id="page-beginner" class="page-content hidden space-y-8">
+            <div class="border-l-4 border-[#00ff66] pl-4">
+                <h1 class="text-3xl font-extrabold text-white">First 10 Minutes & 7-Day Survival Guide</h1>
+                <p class="text-brand-muted text-sm mt-1">Step-by-step beginner checklist to avoid early eviction and debt.</p>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Timeline step 1 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="w-8 h-8 rounded-full bg-[#00ff66] text-black font-extrabold flex items-center justify-center text-sm">1</span>
+                        <h3 class="text-xl font-bold text-white">First 10 Minutes: Setup</h3>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Select either the <span class="text-[#00ff66] font-bold">Tech Bro</span> trait (for CcHub tech speed) or <span class="text-[#00ff66] font-bold">Street Hustler</span> trait. Check starting funds. If Lapo background, immediately take a Danfo to Mushin or Yaba.
+                    </p>
+                </div>
+
+                <!-- Timeline step 2 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="w-8 h-8 rounded-full bg-[#00ff66] text-black font-extrabold flex items-center justify-center text-sm">2</span>
+                        <h3 class="text-xl font-bold text-white">First Day: Securing Housing & Job</h3>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Rent the Mushin Face-Me-I-Face-You (₦2,400/wk) or Yaba Self-Contain (₦6,000/wk). Travel to CcHub in Yaba or Balogun Market. Apply for an entry-level shift immediately.
+                    </p>
+                </div>
+
+                <!-- Timeline step 3 -->
+                <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl p-6 relative">
+                    <div class="flex items-center space-x-3 mb-3">
+                        <span class="w-8 h-8 rounded-full bg-[#00ff66] text-black font-extrabold flex items-center justify-center text-sm">3</span>
+                        <h3 class="text-xl font-bold text-white">First Week: Managing Needs & Rent</h3>
+                    </div>
+                    <p class="text-xs text-brand-muted leading-relaxed">
+                        Complete 5 full shifts during the week. Keep a emergency cash float of at least ₦10,000 to cover Sunday night rent payment automatically.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Top 5 Mistakes -->
+            <div class="bg-[#161b22] border border-rose-500/30 rounded-2xl p-6 space-y-4">
+                <h2 class="text-xl font-bold text-rose-400 flex items-center gap-2">
+                    <i data-lucide="alert-circle"></i>
+                    <span>Top 5 Fatal Beginner Mistakes</span>
+                </h2>
+                <ul class="space-y-2 text-xs text-brand-muted list-disc list-inside">
+                    <li><strong class="text-white">Going to work dirty or hungry:</strong> Reduces shift cash yield by 40%.</li>
+                    <li><strong class="text-white">Taking Uber everywhere early on:</strong> Drains starter cash within 3 in-game days.</li>
+                    <li><strong class="text-white">Forgetting Sunday rent deadline:</strong> Causes immediate eviction and loss of inventory.</li>
+                    <li><strong class="text-white">Ignoring Bladder decay:</strong> Bladder decays fastest (-7.0%/hr). Always check before travel.</li>
+                    <li><strong class="text-white">Buying expensive designer clothes before a car or apartment:</strong> Wastes critical early capital.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-[#161b22] border-t border-[#1f4229] mt-16 py-12 text-xs text-brand-muted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                
+                <!-- Col 1 -->
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2 text-white font-bold text-base">
+                        <i data-lucide="gamepad-2" class="text-[#00ff66]"></i>
+                        <span>LagosLifeGames.online</span>
+                    </div>
+                    <p class="text-brand-muted text-xs leading-relaxed">
+                        The ultimate independent strategy guide, wiki, and calculator portal for Lagos Life browser game by Shalom Rayhamen.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[11px] font-mono">Popular Guides</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#jobs" onclick="navigateTo('jobs')" class="hover:text-[#00ff66]">Jobs & Salary Directory</a></li>
+                        <li><a href="#houses" onclick="navigateTo('houses')" class="hover:text-[#00ff66]">Houses & Weekly Rent</a></li>
+                        <li><a href="#money" onclick="navigateTo('money')" class="hover:text-[#00ff66]">Money Making Calculator</a></li>
+                        <li><a href="#beginner" onclick="navigateTo('beginner')" class="hover:text-[#00ff66]">First 10 Minutes Guide</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[11px] font-mono">Game Data & App</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#app-guide" onclick="navigateTo('app-guide')" class="hover:text-[#00ff66]">PWA Android & iOS Setup</a></li>
+                        <li><a href="#codes" onclick="navigateTo('codes')" class="hover:text-[#00ff66]">Codes & Cheats Status</a></li>
+                        <li><a href="#map" onclick="navigateTo('map')" class="hover:text-[#00ff66]">Map Locations & Bus Fares</a></li>
+                        <li><a href="https://lagoslife.app/" target="_blank" rel="noopener" class="text-[#00ff66] hover:underline">Official Game Website</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div class="space-y-2">
+                    <h4 class="text-white font-bold uppercase tracking-wider text-[11px] font-mono">SEO Tools & Metadata</h4>
+                    <div class="flex flex-col space-y-2">
+                        <button onclick="toggleModal('modal-sitemap')" class="text-left hover:text-[#00ff66] flex items-center gap-1">
+                            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                            <span>Inspect sitemap.xml</span>
+                        </button>
+                        <button onclick="toggleModal('modal-robots')" class="text-left hover:text-[#00ff66] flex items-center gap-1">
+                            <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                            <span>Inspect robots.txt</span>
+                        </button>
+                        <button onclick="toggleModal('modal-schema')" class="text-left hover:text-[#00ff66] flex items-center gap-1">
+                            <i data-lucide="code" class="w-3.5 h-3.5"></i>
+                            <span>Inspect JSON-LD Schema</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-[#1f4229] pt-6 flex flex-col sm:flex-row justify-between items-center text-brand-muted text-[11px]">
+                <p>&copy; 2026 LagosLifeGames.online. All guide content based on verified Lagos Life game data.</p>
+                <div class="flex space-x-4 mt-2 sm:mt-0">
+                    <a href="https://lagoslife.app/" target="_blank" class="hover:text-white">Play Game</a>
+                    <span>•</span>
+                    <button onclick="scrollToTop()" class="hover:text-[#00ff66]">Back to Top ↑</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </footer>
 
-  <!-- Success modal shown immediately before redirect -->
-  <div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
-      <div class="modal-content border-0 rounded-4 text-center p-4 shadow-lg">
-        <div class="success-icon">✓</div>
-        <h4 class="mt-3">Registration complete!</h4>
-        <p class="text-secondary">Your account details have been accepted. Taking you to the next website…</p>
-        <div class="progress redirect-progress">
-          <div id="redirectProgress" class="progress-bar" style="width:0%"></div>
+    
+    <!-- Sitemap Modal -->
+    <div id="modal-sitemap" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl max-w-2xl w-full p-6 space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-white font-mono text-sm">sitemap.xml Preview</h3>
+                <button onclick="toggleModal('modal-sitemap')" class="text-brand-muted hover:text-white"><i data-lucide="x"></i></button>
+            </div>
+            <pre class="bg-[#0d1117] p-4 rounded-xl text-xs font-mono text-[#00ff66] overflow-x-auto max-h-96">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/&lt;/loc&gt;&lt;priority&gt;1.0&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/how-to-play-lagos-life/&lt;/loc&gt;&lt;priority&gt;0.9&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-jobs/&lt;/loc&gt;&lt;priority&gt;0.9&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/how-to-make-money-in-lagos-life/&lt;/loc&gt;&lt;priority&gt;0.9&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-best-careers/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-codes-cheats/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-app/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-tips-and-tricks/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-houses/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-map-locations/&lt;/loc&gt;&lt;priority&gt;0.8&lt;/priority&gt;&lt;/url&gt;
+  &lt;url&gt;&lt;loc&gt;https://lagoslifegames.online/lagos-life-beginner-guide/&lt;/loc&gt;&lt;priority&gt;0.9&lt;/priority&gt;&lt;/url&gt;
+&lt;/urlset&gt;</pre>
         </div>
-        <button class="btn btn-success rounded-pill mt-3 px-4" id="goNow">Continue now</button>
-      </div>
     </div>
-  </div>
 
-  <!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1739205,"ffffff","ffffff");</script><!-- END: Powered by Supercounters.com -->
+    <!-- Robots Modal -->
+    <div id="modal-robots" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl max-w-xl w-full p-6 space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-white font-mono text-sm">robots.txt Preview</h3>
+                <button onclick="toggleModal('modal-robots')" class="text-brand-muted hover:text-white"><i data-lucide="x"></i></button>
+            </div>
+            <pre class="bg-[#0d1117] p-4 rounded-xl text-xs font-mono text-[#00ff66]">
+User-agent: *
+Allow: /
+Sitemap: https://lagoslifegames.online/sitemap.xml</pre>
+        </div>
+    </div>
 
+    <!-- Schema Modal -->
+    <div id="modal-schema" class="hidden fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4">
+        <div class="bg-[#161b22] border border-[#1f4229] rounded-2xl max-w-2xl w-full p-6 space-y-4">
+            <div class="flex justify-between items-center">
+                <h3 class="font-bold text-white font-mono text-sm">Structured JSON-LD Schema</h3>
+                <button onclick="toggleModal('modal-schema')" class="text-brand-muted hover:text-white"><i data-lucide="x"></i></button>
+            </div>
+            <pre id="schema-code" class="bg-[#0d1117] p-4 rounded-xl text-xs font-mono text-[#00ff66] overflow-x-auto max-h-96"></pre>
+        </div>
+    </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/app.js"></script>
+    <script>
+        // Page Title and Navigation Mapping
+        const pageTitles = {
+            'homepage': 'How to Play Lagos Life',
+            'jobs': 'Jobs & Salaries Directory',
+            'money': 'How to Make Money',
+            'best-careers': 'Best Careers Comparison',
+            'codes': 'Codes & Cheats Policy',
+            'app-guide': 'Mobile App & Web Access',
+            'tips': 'Tips & Hacks',
+            'houses': 'Houses & Rent Guide',
+            'map': 'Map & Transport Directory',
+            'beginner': 'Beginner Starter Guide'
+        };
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Navigation Controller
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(el => el.classList.add('hidden'));
+            
+            // Show selected page
+            const target = document.getElementById('page-' + pageId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Update tab styles
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('tab-active');
+            });
+            const activeTab = document.getElementById('tab-' + pageId);
+            if (activeTab) {
+                activeTab.classList.add('tab-active');
+            }
+
+            // Update breadcrumb
+            document.getElementById('breadcrumb-current').textContent = pageTitles[pageId] || 'Guide';
+
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            // Scroll to top smooth
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Global Search Logic
+        const searchableIndex = [
+            { title: "Jobs & Salaries Table", page: "jobs", snippet: "Tech Intern, Finance Analyst, Hype Man, Trader salaries and shifts." },
+            { title: "Rent Prices & Deposits", page: "houses", snippet: "Mushin Face-Me-I-Face-You, Yaba Self-Contain, Lekki Mini-Flat." },
+            { title: "Calculators & Money Making", page: "money", snippet: "Interactive budget calculator, side gigs, Danfo driving." },
+            { title: "Codes and Cheat Status", page: "codes", snippet: "Official notice on secret money cheats and phishing scams." },
+            { title: "Android / iPhone App Installation", page: "app-guide", snippet: "How to add Lagos Life to home screen as a PWA." },
+            { title: "Map & Transport Fares", page: "map", snippet: "Yaba, VI, Lekki, Balogun Market Danfo and Uber costs." },
+            { title: "Need System Decay Rates", page: "homepage", snippet: "Bladder -7.0%/hr, Hunger -5.5%/hr, Energy, Fun, Hygiene." }
+        ];
+
+        function handleGlobalSearch() {
+            const query = document.getElementById('global-search').value.toLowerCase().trim();
+            const dropdown = document.getElementById('search-results-dropdown');
+            
+            if (!query) {
+                dropdown.classList.add('hidden');
+                return;
+            }
+
+            const results = searchableIndex.filter(item => 
+                item.title.toLowerCase().includes(query) || item.snippet.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                dropdown.innerHTML = `<div class="p-3 text-xs text-brand-muted">No matching guides found for "${query}"</div>`;
+            } else {
+                dropdown.innerHTML = results.map(res => `
+                    <div onclick="navigateTo('${res.page}'); document.getElementById('search-results-dropdown').classList.add('hidden');" class="p-2.5 hover:bg-[#12281a] rounded-lg cursor-pointer transition-colors border-b border-[#1f4229]/50 last:border-0">
+                        <div class="text-xs font-bold text-white flex items-center justify-between">
+                            <span>${res.title}</span>
+                            <span class="text-[10px] text-[#00ff66] font-mono uppercase">Open</span>
+                        </div>
+                        <div class="text-[11px] text-brand-muted mt-0.5 line-clamp-1">${res.snippet}</div>
+                    </div>
+                `).join('');
+            }
+            dropdown.classList.remove('hidden');
+        }
+
+        function handleGlobalSearchMobile(val) {
+            const container = document.getElementById('mobile-search-results');
+            if (!val.trim()) {
+                container.classList.add('hidden');
+                return;
+            }
+            const results = searchableIndex.filter(item => 
+                item.title.toLowerCase().includes(val.toLowerCase()) || item.snippet.toLowerCase().includes(val.toLowerCase())
+            );
+            container.innerHTML = results.map(res => `
+                <button onclick="navigateTo('${res.page}')" class="w-full text-left p-2 hover:bg-[#12281a] rounded text-xs text-white">
+                    <span class="font-bold">${res.title}</span>
+                </button>
+            `).join('');
+            container.classList.remove('hidden');
+        }
+
+        // Budget Calculator Logic
+        function calculateBudget() {
+            const wage = parseFloat(document.getElementById('calc-job').value) || 0;
+            const shifts = parseFloat(document.getElementById('calc-shifts').value) || 0;
+            const rent = parseFloat(document.getElementById('calc-rent').value) || 0;
+
+            const gross = wage * shifts;
+            const net = gross - rent;
+
+            document.getElementById('calc-gross').textContent = '₦' + gross.toLocaleString();
+            document.getElementById('calc-housing').textContent = '-₦' + rent.toLocaleString();
+            document.getElementById('calc-net').textContent = '₦' + net.toLocaleString();
+
+            const netEl = document.getElementById('calc-net');
+            if (net < 0) {
+                netEl.className = "text-2xl font-extrabold text-rose-500 font-mono mt-1";
+            } else {
+                netEl.className = "text-2xl font-extrabold text-[#00ff66] font-mono mt-1";
+            }
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modals Toggle
+        function toggleModal(modalId) {
+            const el = document.getElementById(modalId);
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+        }
+
+        // Copy to clipboard helper
+        function copyToClipboard(text) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert('Copied URL to clipboard: ' + text);
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Schema Generator
+        const schemaData = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "WebSite",
+                    "@id": "https://lagoslifegames.online/#website",
+                    "url": "https://lagoslifegames.online/",
+                    "name": "Lagos Life Game Guides",
+                    "description": "Your Ultimate Lagos Life Strategy & Wiki Hub",
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Lagos Life Guides Network"
+                    }
+                },
+                {
+                    "@type": "Article",
+                    "@id": "https://lagoslifegames.online/#article",
+                    "headline": "How to Play Lagos Life: Ultimate Strategy Guide",
+                    "description": "Comprehensive guide for Lagos Life game covering jobs, rents, map locations, needs decay, and money making strategies.",
+                    "author": {
+                        "@type": "Person",
+                        "name": "Shalom Rayhamen Game Data Team"
+                    }
+                }
+            ]
+        };
+
+        document.getElementById('schema-code').textContent = JSON.stringify(schemaData, null, 2);
+
+        // Initial setup on window load
+        window.onload = function() {
+            navigateTo('homepage');
+            calculateBudget();
+        };
+    </script>
 </body>
 </html>
