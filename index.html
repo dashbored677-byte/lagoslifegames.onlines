@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Lagos-inspired interactive landing page and sign-up experience.">
+  <title>Lagos Life — Welcome</title>
+  <link rel="shortcut icon" type="image/png" href="chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=http%3A%2F%2Flagoslife.app%2F" />
+  <meta property="og:image"content="chrome://favicon2/?size=24&scaleFactor=1x&showFallbackMonogram=&pageUrl=http%3A%2F%2Flagoslife.app%2F" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Loading screen -->
+  <div id="loader" class="loader-screen">
+    <div class="loader-logo">Lagos Life</div>
+    <div class="loader-progress"><span></span></div>
+  </div>
+
+  <main class="landing-page">
+
+    <!-- Map/reference background -->
+    <div class="map-background" aria-hidden="true"></div>
+    <div class="map-shade" aria-hidden="true"></div>
+
+    <!-- Floating top navigation -->
+    <header class="top-nav glass-panel">
+      <a class="brand" href="#" aria-label="Home">
+        <span class="brand-crown">♕</span>
+        <span>Lagos Life</span>
+      </a>
+
+      <div class="top-actions">
+        <button class="btn btn-signup js-open-signup">Sign up</button>
+        <button class="btn btn-login js-open-signup">Log in</button>
+      </div>
+    </header>
+
+    <!-- Stats -->
+    <section class="top-stats">
+      <div class="pill status-pill"><span class="status-dot"></span>143k online now</div>
+      <div class="pill">👀 15093k visits</div>
+    </section>
+
+    <!-- Quick chips -->
+    <section class="quick-chips">
+      <div class="pill feature-chip">🏛️ Gov @Franka</div>
+      <div class="pill feature-chip">🌊 Sea Plots</div>
+      <div class="pill feature-chip">🏠 400 homes</div>
+    </section>
+
+    <!-- Announcement -->
+    <div class="announcement">
+      🎉 <strong>Owambe season is law</strong> this week
+    </div>
+
+    <!-- Interactive map markers -->
+    <div class="map-hotspots" aria-label="Featured locations">
+      <button class="map-marker marker-1" data-title="Music & Events" data-text="Discover entertainment and events across the city.">🎷</button>
+      <button class="map-marker marker-2" data-title="Stadium" data-text="Visit the stadium and join the crowd.">⚽</button>
+      <button class="map-marker marker-3" data-title="Bank" data-text="Manage your virtual money and finances.">🏦</button>
+      <button class="map-marker marker-4" data-title="Church" data-text="Explore places of worship around the city.">⛪</button>
+      <button class="map-marker marker-5" data-title="Food" data-text="Find restaurants and local food spots.">🍲</button>
+      <button class="map-marker marker-6" data-title="Beach" data-text="Relax at the waterfront and enjoy the island.">⛵</button>
+      <button class="map-marker marker-7" data-title="Government" data-text="Explore civic and government locations.">⚖️</button>
+      <button class="map-marker marker-8" data-title="Transport" data-text="Move around Lagos and explore new places.">🚕</button>
+      <button class="map-marker marker-9" data-title="Shopping" data-text="Shop for items and discover businesses.">🛍️</button>
+    </div>
+
+    <!-- Labels -->
+    <div class="map-label mainland">MAINLAND</div>
+    <div class="map-label island">ISLAND</div>
+
+    <!-- Coming soon badge -->
+    <div class="coming-soon">✈️ <strong>Airport</strong> · Coming soon</div>
+
+    <!-- Bottom CTA -->
+    <section class="bottom-cta glass-panel">
+      <div class="players">
+        <div class="avatar-stack" aria-hidden="true">
+          <span>👩🏽</span><span>🧑🏾</span><span>👨🏿</span><span>🧑🏽</span>
+        </div>
+        <div><strong>143k Lagosians</strong> playing right now <span class="muted">· free</span></div>
+      </div>
+      <div class="cta-buttons">
+        <button class="btn btn-cta js-open-signup">Sign up free</button>
+        <button class="btn btn-login-large js-open-signup">Log in</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Location info modal -->
+  <div class="modal fade" id="locationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="locationTitle">Location</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-0" id="locationText"></div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-success rounded-pill px-4 js-open-signup" data-bs-dismiss="modal">Explore by signing up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign-up modal -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content signup-card border-0">
+        <div class="signup-visual">
+          <div class="signup-visual-inner">
+            <span class="mini-crown">♕</span>
+            <h2>Build your Lagos life.</h2>
+            <p>Create your character, explore the city and start your own journey.</p>
+            <div class="benefit-list">
+              <span>✓ Create your profile</span>
+              <span>✓ Explore the city</span>
+              <span>✓ Discover jobs & businesses</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup-form-side">
+          <div class="modal-header border-0">
+            <div>
+              <div class="eyebrow">WELCOME</div>
+              <h3 id="signupTitle">Create your account</h3>
+              <p class="small text-secondary mb-0">It only takes a minute to get started.</p>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+
+          <form id="signupForm" novalidate>
+            <div class="modal-body">
+              <div id="formAlert" class="alert d-none" role="alert"></div>
+
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label">Full name</label>
+                  <input id="fullName" name="fullName" class="form-control form-control-lg" type="text" placeholder="Your name" required>
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="username" class="form-label">Username</label>
+                  <input id="username" name="username" class="form-control form-control-lg" type="text" placeholder="@username" minlength="3" required>
+                  <div class="invalid-feedback">Choose a username with at least 3 characters.</div>
+                </div>
+                <div class="col-12">
+                  <label for="email" class="form-label">Email address</label>
+                  <input id="email" name="email" class="form-control form-control-lg" type="email" placeholder="you@example.com" required>
+                  <div class="invalid-feedback">Enter a valid email address.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="password" class="form-label">Password</label>
+                  <input id="password" name="password" class="form-control form-control-lg" type="password" minlength="8" placeholder="At least 8 characters" required>
+                  <div class="invalid-feedback">Password must be at least 8 characters.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="confirmPassword" class="form-label">Confirm password</label>
+                  <input id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" type="password" placeholder="Repeat password" required>
+                  <div class="invalid-feedback">Passwords must match.</div>
+                </div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="ageCheck" required>
+                    <label class="form-check-label" for="ageCheck">I confirm that I meet the age requirement for this experience.</label>
+                    <div class="invalid-feedback">Please confirm before registering.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal-footer border-0">
+              <button type="submit" class="btn btn-register w-100">
+                <span class="btn-label">Register & continue</span>
+                <span class="spinner-border spinner-border-sm d-none" aria-hidden="true"></span>
+              </button>
+              <p class="tiny-note text-center w-100 mb-0">By registering, you agree to the site's terms and privacy policy.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success modal shown immediately before redirect -->
+  <div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content border-0 rounded-4 text-center p-4 shadow-lg">
+        <div class="success-icon">✓</div>
+        <h4 class="mt-3">Registration complete!</h4>
+        <p class="text-secondary">Your account details have been accepted. Taking you to the next website…</p>
+        <div class="progress redirect-progress">
+          <div id="redirectProgress" class="progress-bar" style="width:0%"></div>
+        </div>
+        <button class="btn btn-success rounded-pill mt-3 px-4" id="goNow">Continue now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEGIN: Powered by Supercounters.com -->
+<center><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script><script type="text/javascript">sc_online_i(1739205,"ffffff","ffffff");</script><!-- END: Powered by Supercounters.com -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
